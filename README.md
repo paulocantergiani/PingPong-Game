@@ -53,11 +53,3 @@ The game is built using Python and the Turtle graphics library, making it a grea
 ## Customization
 
 Feel free to modify the game constants in the `main.py` file to change aspects like screen size, paddle size, ball speed, etc.
-
-## Contributing
-
-Contributions, issues, and feature requests are welcome. Feel free to check [issues page](https://github.com/yourusername/ping-pong-game/issues) if you want to contribute.
-
-## License
-
-This project is open source and available under the [MIT License](LICENSE).
