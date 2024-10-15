@@ -15,7 +15,7 @@ FONT = ("Courier", 24, "normal")
 class ScoreBoard(Turtle):
     def __init__(self):
         super().__init__()
-        self.color("white")
+        self.color("red")
         self.penup()
         self.hideturtle()
         self.left_score = 0
@@ -158,24 +158,29 @@ class PingPongGame:
 
     # Check for collisions between the ball and panels or screen edges
     def check_collision(self):
-        for segment in self.panels[0] + self.panels[1]:
-            if self.ball.distance(segment) < 22:
-                if self.ball_direction == "Up and Right":
-                    self.ball_direction = "Up and Left"
-                    self.scoreboard.right_point()
-                    return
-                elif self.ball_direction == "Down and Right":
-                    self.ball_direction = "Down and Left"
-                    self.scoreboard.right_point()
-                    return
-                elif self.ball_direction == "Up and Left":
-                    self.ball_direction = "Up and Right"
-                    self.scoreboard.left_point()
-                    return
-                elif self.ball_direction == "Down and Left":
-                    self.ball_direction = "Down and Right"
-                    self.scoreboard.left_point()
-                    return
+        if (
+            self.ball.xcor() > SCREEN_WIDTH // 2 - 40
+            or self.ball.xcor() < -SCREEN_WIDTH // 2 + 40
+        ) and (
+            self.panels[0][0].ycor() < self.ball.ycor() < self.panels[0][-1].ycor()
+            or self.panels[1][0].ycor() < self.ball.ycor() < self.panels[1][-1].ycor()
+        ):
+            if self.ball_direction == "Up and Right":
+                self.ball_direction = "Up and Left"
+                self.scoreboard.right_point()
+                return
+            elif self.ball_direction == "Down and Right":
+                self.ball_direction = "Down and Left"
+                self.scoreboard.right_point()
+                return
+            elif self.ball_direction == "Up and Left":
+                self.ball_direction = "Up and Right"
+                self.scoreboard.left_point()
+                return
+            elif self.ball_direction == "Down and Left":
+                self.ball_direction = "Down and Right"
+                self.scoreboard.left_point()
+                return
         if (
             self.ball.ycor() > SCREEN_HEIGHT // 2 - 10
             or self.ball.ycor() < -SCREEN_HEIGHT // 2 + 10
