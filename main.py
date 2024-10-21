@@ -161,10 +161,8 @@ class PingPongGame:
         if (
             self.ball.xcor() > SCREEN_WIDTH // 2 - 40
             or self.ball.xcor() < -SCREEN_WIDTH // 2 + 40
-        ) and (
-            self.panels[0][0].ycor() < self.ball.ycor() < self.panels[0][-1].ycor()
-            or self.panels[1][0].ycor() < self.ball.ycor() < self.panels[1][-1].ycor()
-        ):
+        ) and (self.panels[0][0].ycor() < self.ball.ycor() < self.panels[0][-1].ycor()
+            or self.panels[1][0].ycor() < self.ball.ycor() < self.panels[1][-1].ycor()) :
             if self.ball_direction == "Up and Right":
                 self.ball_direction = "Up and Left"
                 self.scoreboard.right_point()
